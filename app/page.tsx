@@ -1,101 +1,186 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { motion } from 'framer-motion';
+import { VortexBackground } from '@/components/vortext-background';
+import Image from 'next/image';
+import { cn } from '@/lib/utils';
+import XIcon from '@/icons/twitter-x.svg';
+import DexIcon from '@/icons/dex.svg';
+import TelegramIcon from '@/icons/telegram.svg';
+
+const MagicButton = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <motion.button
+      className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
+      <span
+        className={cn(
+          'inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl',
+          className
+        )}
+      >
+        {children}
+      </span>
+    </motion.button>
+  );
+};
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+export default function LandingPage() {
+  const images = [
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.19.30.jpg-HwlwvoYqXYY3mzA9UFpWI311YIKo8o.jpeg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.32.jpg-IrrSCpnNkzirRFUikESb1PhEkhFdDK.jpeg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.29.jpg-ypnDgqrtD9mjY2VzDFDbzPDVugcm03.jpeg',
+    // 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.44.jpg-CU4b5Nxhf1aR66vjKYIsyQpI6wjOqh.jpeg',
+  ];
+
+  const bannerImage =
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.46.jpg-s5GXXFaOKPKACYlK0foh3qXkDtCjJy.jpeg';
+  const endBannerImage =
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.40.jpg-BSf9uDpF2Bayhs4529RdfFv8px8y5E.jpeg';
+
+  return (
+    <div
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(circle, rgba(31,70,161,1) 0%, rgba(0,18,38,1) 100%)',
+      }}
+    >
+      <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-4 p-10 z-50">
+        <MagicButton className="bg-white">
+          <XIcon className="w-10 h-10" />
+        </MagicButton>
+        <MagicButton>
+          <DexIcon className="w-10 h-10" />
+        </MagicButton>
+        <MagicButton className="bg-white">
+          <TelegramIcon className="w-10 h-10" />
+        </MagicButton>
+      </div>
+      {/* Vortex effect */}
+      <VortexBackground />
+
+      {/* Content */}
+      <div className="relative z-20">
+        {/* Hero Section */}
+        <section className="h-screen flex flex-col items-center justify-center">
+          {/* Floating Jelly Character */}
+          <motion.div
+            className="w-64 h-64 scale-125"
+            animate={{
+              y: [0, -20, 0],
+              rotate: [-5, 5, -5],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26_18.20.32-removebg-preview%20(1)-ROpJBvv2aB0W9jr8d5364gD05LvH7t.png"
+              alt="Jelly Character"
+              className="w-full h-full object-contain scale-125"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </motion.div>
+          <motion.h1
+            className="text-8xl md:text-[12rem] mb-12 font-lobster text-white"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            Jelly
+          </motion.h1>
+          <motion.h1
+            className="text-3xl mb-12 font-lobster text-white"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            0x000000
+          </motion.h1>
+        </section>
+
+        {/* Image Grid Section */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto">
+            {/* <h2 
+              className="text-4xl md:text-5xl font-bold text-white mb-12 text-center font-lobster"
+              style={{
+                textShadow: "0 0 5px #1E40AF, 0 0 10px #1E40AF, 0 0 15px #1E40AF"
+              }}
+            >
+              Jelly Gallery
+            </h2> */}
+
+            {/* Banner Image */}
+            <motion.div
+              className="relative w-full h-48 md:h-64 mb-8 overflow-hidden rounded-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Image
+                src={bannerImage}
+                alt="Jelly in a magical night scene"
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-300 hover:scale-110 rounded-lg"
+              />
+            </motion.div>
+
+            {/* Image Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {images.map((src, index) => (
+                <motion.div
+                  key={index}
+                  className="relative aspect-square overflow-hidden rounded-lg"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Image
+                    src={src}
+                    alt={`Jelly image ${index + 1}`}
+                    layout="fill"
+                    objectFit="cover"
+                    className="transition-transform duration-300 hover:scale-110 rounded-lg"
+                  />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Banner Image */}
+            <motion.div
+              className="relative w-full h-48 md:h-64 mt-8 overflow-hidden rounded-lg"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <Image
+                src={endBannerImage}
+                alt="Jelly in a magical night scene"
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-300 hover:scale-110"
+              />
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
