@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { VortexBackground } from '@/components/vortext-background';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -40,12 +41,11 @@ export default function LandingPage() {
     'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.19.30.jpg-HwlwvoYqXYY3mzA9UFpWI311YIKo8o.jpeg',
     'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.32.jpg-IrrSCpnNkzirRFUikESb1PhEkhFdDK.jpeg',
     'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.29.jpg-ypnDgqrtD9mjY2VzDFDbzPDVugcm03.jpeg',
-    // 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.44.jpg-CU4b5Nxhf1aR66vjKYIsyQpI6wjOqh.jpeg',
   ];
 
-  const bannerImage =
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.46.jpg-s5GXXFaOKPKACYlK0foh3qXkDtCjJy.jpeg';
   const endBannerImage =
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.46.jpg-s5GXXFaOKPKACYlK0foh3qXkDtCjJy.jpeg';
+  const bannerImage =
     'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.40.jpg-BSf9uDpF2Bayhs4529RdfFv8px8y5E.jpeg';
 
   return (
@@ -56,16 +56,39 @@ export default function LandingPage() {
           'radial-gradient(circle, rgba(31,70,161,1) 0%, rgba(0,18,38,1) 100%)',
       }}
     >
-      <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-4 p-10 z-50">
-        <MagicButton>
-          <XIcon className="w-6 h-6" />
-        </MagicButton>
-        <MagicButton>
-          <TelegramIcon className="w-6 h-6" />
-        </MagicButton>
-        <MagicButton>
-          <DexIcon className="w-6 h-6" />
-        </MagicButton>
+      <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-4 px-8 md:px-24 py-10 z-50">
+        <Link
+          href="https://twitter.com/jellysolanaa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-105 transition-transform duration-300"
+        >
+          <MagicButton>
+            <XIcon className="w-6 h-6" />
+          </MagicButton>
+        </Link>
+
+        <Link
+          href="https://t.me/jellyportal"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-105 transition-transform duration-300"
+        >
+          <MagicButton>
+            <TelegramIcon className="w-6 h-6" />
+          </MagicButton>
+        </Link>
+
+        <Link
+          href="https://dexscreener.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:scale-105 transition-transform duration-300"
+        >
+          <MagicButton>
+            <DexIcon className="w-6 h-6" />
+          </MagicButton>
+        </Link>
       </div>
       {/* Vortex effect */}
       <VortexBackground />
@@ -113,19 +136,9 @@ export default function LandingPage() {
 
         {/* Image Grid Section */}
         <section className="py-20 px-4">
-          <div className="container mx-auto">
-            {/* <h2 
-              className="text-4xl md:text-5xl font-bold text-white mb-12 text-center font-lobster"
-              style={{
-                textShadow: "0 0 5px #1E40AF, 0 0 10px #1E40AF, 0 0 15px #1E40AF"
-              }}
-            >
-              Jelly Gallery
-            </h2> */}
-
-            {/* Banner Image */}
+          <div className="px-5 md:px-20">
             <motion.div
-              className="relative w-full h-48 md:h-64 mb-8 overflow-hidden rounded-lg"
+              className="relative w-full h-72 md:h-[400px] mb-8 overflow-hidden rounded-[12px]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
@@ -136,7 +149,7 @@ export default function LandingPage() {
                 alt="Jelly in a magical night scene"
                 layout="fill"
                 objectFit="cover"
-                className="transition-transform duration-300 hover:scale-110 rounded-lg"
+                className="transition-transform duration-300 hover:scale-110 rounded-[12px]"
               />
             </motion.div>
 
@@ -145,26 +158,28 @@ export default function LandingPage() {
               {images.map((src, index) => (
                 <motion.div
                   key={index}
-                  className="relative aspect-square overflow-hidden rounded-lg"
+                  className="relative aspect-square overflow-hidden rounded-[12px]"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <Image
-                    src={src}
-                    alt={`Jelly image ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 hover:scale-110 rounded-lg"
-                  />
+                  <div className="relative w-full h-full overflow-hidden rounded-[12px]">
+                    <Image
+                      src={src}
+                      alt={`Jelly image ${index + 1}`}
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 hover:scale-110 rounded-[12px]"
+                    />
+                  </div>
                 </motion.div>
               ))}
             </div>
 
             {/* Banner Image */}
             <motion.div
-              className="relative w-full h-48 md:h-64 mt-8 overflow-hidden rounded-lg"
+              className="relative w-full h-72 md:h-[400px] mt-8 overflow-hidden rounded-[12px]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}

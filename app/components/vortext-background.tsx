@@ -32,13 +32,13 @@ export function VortexBackground() {
     // Initialize particles
     const initParticles = () => {
       particles.current = [];
-      const numberOfParticles = 500;
+      const numberOfParticles = 400;
       const colors = ['#60A5FA', '#818CF8', '#A78BFA', '#C084FC', '#E879F9'];
 
       for (let i = 0; i < numberOfParticles; i++) {
         particles.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
+          x: Math.random() * canvas.width / 0.5,
+          y: Math.random() * canvas.height / 0.5,
           vx: 0,
           vy: 0,
           size: Math.random() * 3 + 1,
