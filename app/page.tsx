@@ -37,16 +37,9 @@ const MagicButton = ({
 };
 
 export default function LandingPage() {
-  const images = [
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.19.30.jpg-HwlwvoYqXYY3mzA9UFpWI311YIKo8o.jpeg',
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.32.jpg-IrrSCpnNkzirRFUikESb1PhEkhFdDK.jpeg',
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.29.jpg-ypnDgqrtD9mjY2VzDFDbzPDVugcm03.jpeg',
-  ];
-
-  const endBannerImage =
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.46.jpg-s5GXXFaOKPKACYlK0foh3qXkDtCjJy.jpeg';
-  const bannerImage =
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26%2018.20.40.jpg-BSf9uDpF2Bayhs4529RdfFv8px8y5E.jpeg';
+  const images = ['/point.jpg', '/fly.jpg', '/sol.jpg'];
+  const endBannerImage = '/go-to-sol.jpg';
+  const bannerImage = '/door.jpg';
 
   return (
     <div
@@ -110,10 +103,12 @@ export default function LandingPage() {
               ease: 'easeInOut',
             }}
           >
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2024-11-26_18.20.32-removebg-preview%20(1)-ROpJBvv2aB0W9jr8d5364gD05LvH7t.png"
+            <Image
+              src="/floating.png"
               alt="Jelly Character"
               className="w-full h-full object-contain scale-125"
+              layout="fill"
+              objectFit="cover"
             />
           </motion.div>
           <motion.h1

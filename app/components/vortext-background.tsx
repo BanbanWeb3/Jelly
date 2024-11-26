@@ -37,8 +37,8 @@ export function VortexBackground() {
 
       for (let i = 0; i < numberOfParticles; i++) {
         particles.current.push({
-          x: Math.random() * canvas.width / 0.5,
-          y: Math.random() * canvas.height / 0.5,
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
           vx: 0,
           vy: 0,
           size: Math.random() * 3 + 1,
