@@ -57,14 +57,14 @@ export default function LandingPage() {
       }}
     >
       <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-4 p-10 z-50">
-        <MagicButton className="bg-white">
-          <XIcon className="w-10 h-10" />
+        <MagicButton>
+          <XIcon className="w-6 h-6" />
         </MagicButton>
         <MagicButton>
-          <DexIcon className="w-10 h-10" />
+          <TelegramIcon className="w-6 h-6" />
         </MagicButton>
-        <MagicButton className="bg-white">
-          <TelegramIcon className="w-10 h-10" />
+        <MagicButton>
+          <DexIcon className="w-6 h-6" />
         </MagicButton>
       </div>
       {/* Vortex effect */}
