@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { VortexBackground } from '@/components/vortext-background';
@@ -8,25 +9,27 @@ import { cn } from '@/lib/utils';
 import XIcon from '@/icons/twitter-x.svg';
 import DexIcon from '@/icons/dex.svg';
 import TelegramIcon from '@/icons/telegram.svg';
+import { useClipboard } from 'use-clipboard-copy';
 
 const MagicButton = ({
   children,
   className,
+  ...props
 }: {
   children: React.ReactNode;
-  className?: string;
-}) => {
+} & Pick<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick' | 'className'>) => {
   return (
     <motion.button
       className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
+      {...props}
     >
       <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
       <span
         className={cn(
-          'inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-slate-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl',
+          'inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-blue-950 px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl',
           className
         )}
       >
@@ -37,9 +40,18 @@ const MagicButton = ({
 };
 
 export default function LandingPage() {
+  const [copied, setCopied] = React.useState(false);
   const images = ['/point.jpg', '/fly.jpg', '/sol.jpg'];
   const endBannerImage = '/go-to-sol.jpg';
   const bannerImage = '/door.jpg';
+  const clipboard = useClipboard();
+  const caText = 'xxxxxxJCvquMYpjGGkhQGr8x2zTiw14pCpUCjXLpump';
+
+  const handleCopy = () => {
+    clipboard.copy(caText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div
@@ -112,21 +124,16 @@ export default function LandingPage() {
             />
           </motion.div>
           <motion.h1
-            className="text-8xl md:text-[12rem] mb-12 font-lobster text-white"
+            className="text-8xl md:text-[12rem] mb-12 font-lobster text-blue-100"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             Jelly
           </motion.h1>
-          <motion.h1
-            className="text-3xl mb-12 font-lobster text-white"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            0x000000
-          </motion.h1>
+          <MagicButton onClick={handleCopy} className="text-2xl px-8 font-thin">
+            {copied ? 'Copied!' : caText}
+          </MagicButton>
         </section>
 
         {/* Image Grid Section */}

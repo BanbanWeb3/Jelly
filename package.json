@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.17",
@@ -19,7 +20,7 @@
     "simplex-noise": "^4.0.3",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "@svgr/webpack": "^8.1.0"
+    "use-clipboard-copy": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
