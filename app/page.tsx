@@ -61,12 +61,12 @@ export default function LandingPage() {
           'radial-gradient(circle, rgba(31,70,161,1) 0%, rgba(0,18,38,1) 100%)',
       }}
     >
-      <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-4 px-8 md:px-24 py-10 z-50">
+      <div className="fixed top-0 left-0 w-full h-20 flex justify-start gap-6 px-8 md:px-24 py-10 z-50">
         <Link
           href="https://twitter.com/jellysolanaa"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:scale-105 transition-transform duration-300"
+          className="hover:scale-110 transition-transform duration-300"
         >
           <MagicButton>
             <XIcon className="w-6 h-6" />
@@ -77,7 +77,7 @@ export default function LandingPage() {
           href="https://t.me/jellyportal"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:scale-105 transition-transform duration-300"
+          className="hover:scale-110 transition-transform duration-300"
         >
           <MagicButton>
             <TelegramIcon className="w-6 h-6" />
@@ -88,7 +88,7 @@ export default function LandingPage() {
           href="https://dexscreener.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:scale-105 transition-transform duration-300"
+          className="hover:scale-110 transition-transform duration-300"
         >
           <MagicButton>
             <DexIcon className="w-6 h-6" />
@@ -105,14 +105,26 @@ export default function LandingPage() {
           {/* Floating Jelly Character */}
           <motion.div
             className="w-64 h-64 scale-125"
+            initial={{ opacity: 0, scale: 0.5, y: 100 }}
             animate={{
+              opacity: 1,
+              scale: 1,
               y: [0, -20, 0],
               rotate: [-5, 5, -5],
             }}
             transition={{
-              duration: 4,
-              repeat: Infinity,
-              ease: 'easeInOut',
+              opacity: { duration: 0.8 },
+              scale: { duration: 0.8 },
+              y: {
+                duration: 4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              },
+              rotate: {
+                duration: 4,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }
             }}
           >
             <Image
@@ -131,7 +143,7 @@ export default function LandingPage() {
           >
             Jelly
           </motion.h1>
-          <MagicButton onClick={handleCopy} className="text-2xl px-8 font-thin">
+          <MagicButton onClick={handleCopy} className="text-2xl px-8 font-thin hover:scale-110 transition-transform duration-300">
             {copied ? 'Copied!' : caText}
           </MagicButton>
         </section>
