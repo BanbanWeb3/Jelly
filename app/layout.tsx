@@ -12,11 +12,12 @@ export const metadata: Metadata = {
   description: "Welcome to the world of Jelly",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+export default function RootLayout() {
   return (
     <html lang="en" className={`dark ${permanentMarker.className}`}>
       {/* <body className={`dark ${permanentMarker.className}`}>{children}</body> */}
