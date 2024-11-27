@@ -19,7 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`dark ${permanentMarker.className}`}>
-      <body className={`dark ${permanentMarker.className}`}>{children}</body>
+      {/* <body className={`dark ${permanentMarker.className}`}>{children}</body> */}
+      <body className={`dark ${permanentMarker.className}`}>--</body>
     </html>
   );
 }
